@@ -4,19 +4,23 @@ const createCsvStringifier = require("csv-writer").createObjectCsvStringifier;
 const Transform = require("stream").Transform;
 
 
-let readStream = fs.createReadStream('/Users/armando/Desktop/SDC-project/Products/migrations/skus.csv');
-let writeStream = fs.createWriteStream('/Users/armando/Desktop/SDC-project/Products/clean_data/skus.csv');
+let readStream = fs.createReadStream('/Users/armando/Desktop/SDC-project/Products/migrations/features.csv');
+let writeStream = fs.createWriteStream('/Users/armando/Desktop/SDC-project/Products/clean_data/features.csv');
 
-// id, styleId, size, quantity
+// feature_id,product_id,feature,value
 const csvStringifier = createCsvStringifier({
   header: [
-    { id: 'id', title: 'skus_id' },
-    { id: 'styleId', title: 'style_id' },
-    { id: 'size', title: 'size' },
-    { id: 'quantity', title: 'quantity' },
+    { id: 'feature_id', title: 'feature_id' },
+    { id: 'product_id', title: 'product_id' },
+    { id: 'feature', title: 'feature' },
+    { id: 'value', title: 'value' },
   ],
   alwaysQuote: true,
 });
+// feature_id INTEGER NULL DEFAULT NULL,
+//   product_id INTEGER NULL DEFAULT NULL,
+//   feature VARCHAR NULL DEFAULT NULL,
+//   value VARCHAR NULL DEFAULT NULL,
 
 class CSVCleaner extends Transform {
   constructor(options) {
@@ -34,9 +38,6 @@ class CSVCleaner extends Transform {
       }
     }
 
-    //filters out all non-number characters
-    let onlyNumbers = chunk.quantity.trim();
-    chunk.quantity = onlyNumbers;
     //uses our csvStringifier to turn our chunk into a csv string
     chunk = csvStringifier.stringifyRecords([chunk]);
     this.push(chunk);
