@@ -8,12 +8,11 @@ module.exports.getProductById = (id) => {
     .then(feats => {
       const features = [];
       for (let feature of feats.rows) {
-        console.log(feature);
         features.push( {feature: feature.feature, value: feature.value } );
       }
 
       product.features = features;
-
+      console.log(product);
       return product;
     })
     .catch(err => console.log(err));
