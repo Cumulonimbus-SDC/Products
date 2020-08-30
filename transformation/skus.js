@@ -27,11 +27,7 @@ class CSVCleaner extends Transform {
 
     for (let key in chunk) {
       //trims whitespace
-      let trimKey = key.trim();
-      chunk[trimKey] = chunk[key];
-      if (key !== trimKey) {
-        delete chunk[key];
-      }
+      chunk[key] = chunk[key].trim();
     }
 
     //filters out all non-number characters

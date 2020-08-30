@@ -4,3 +4,4 @@ package-lock.json
 migrations
 clean_data
 .DS_Store
+*.csv
