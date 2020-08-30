@@ -1,9 +1,13 @@
 const { Router } = require('express');
 const router = Router();
 const { getProductById } = require('../../database/Postgres/getProductById.js');
+const { getProductList } = require('../../database/Postgres/getProductList.js');
 
 router.get('/products/list', function (req, res) {
-  res.send('Product List');
+  // res.send('Product List');
+  getProductList(req.query.count, req.query.page)
+    .then(result => res.send(result))
+    .catch(err => res.sendStatus(500));
 });
 
 router.get('/products/:id', (req, res) => {

@@ -12,6 +12,7 @@ module.exports.getProductById = (id) => {
       }
       // add features to product object
       product.features = features;
+      client.end();
       return product;
     })
     .catch(err => console.log(err));
