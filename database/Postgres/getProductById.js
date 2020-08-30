@@ -10,9 +10,8 @@ module.exports.getProductById = (id) => {
       for (let feature of feats.rows) {
         features.push( {feature: feature.feature, value: feature.value } );
       }
-
+      // add features to product object
       product.features = features;
-      console.log(product);
       return product;
     })
     .catch(err => console.log(err));
