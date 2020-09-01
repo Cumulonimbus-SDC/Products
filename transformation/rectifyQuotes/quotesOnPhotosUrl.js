@@ -4,8 +4,8 @@ const createCsvStringifier = require("csv-writer").createObjectCsvStringifier;
 // const Transform = require("stream").Transform;
 
 
-let readStream = fs.createReadStream('/Users/armando/Desktop/SDC-project/Products/migrations/test_data/test_original.csv');
-let writeStream = fs.createWriteStream('/Users/armando/Desktop/SDC-project/Products/migrations/test_data/test_photos.csv');
+let readStream = fs.createReadStream('/Users/armando/Desktop/SDC-project/Products/migrations/photos.csv');
+let writeStream = fs.createWriteStream('/Users/armando/Desktop/SDC-project/Products/clean_data/photos.csv');
 
 var stream = require('stream');
 var xtream = new stream.Transform( { objectMode: true } );
@@ -45,7 +45,7 @@ xtream._flush = function(done) {
 readStream
   .pipe(xtream)
   .pipe(writeStream);
-
+  // .on('finish', () => console.log('finished'));
 // xtream.on('readable', function(){
 // 	while (lines = xtream.read()) {
 // 		lines.forEach(function(line, index){

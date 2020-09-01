@@ -2,6 +2,8 @@ const { Router } = require('express');
 const router = Router();
 const { getProductById } = require('../../database/Postgres/getProductById.js');
 const { getProductList } = require('../../database/Postgres/getProductList.js');
+const { getRelated } = require('../../database/Postgres/getRelated.js');
+const { getStyles } =require('../../database/Postgres/getStyles.js');
 
 router.get('/products/list', function (req, res) {
   // res.send('Product List');
@@ -24,9 +26,19 @@ router.get('/products/:id', (req, res) => {
 
 router.get('/products/:id/styles', (req, res) => {
   const prod = req.params.id;
-  console.log(req.params, 'this is params');
-  console.log(req.query, 'this is query');
-  res.send(`this is product ${prod} styles`);
+
+  getStyles(prod)
+    .then(result => res.send(result))
+    .catch(err => res.sendStatus(500));
+  // res.send(`this is product ${prod} styles`);
+});
+
+router.get('/products/:id/related', (req, res) => {
+  const prod = req.params.id;
+
+  getRelated(prod)
+    .then(result => res.send(result))
+    .catch(err => res.sendStatus(500));
 });
 
 module.exports = router;
