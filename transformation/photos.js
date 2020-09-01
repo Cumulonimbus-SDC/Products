@@ -4,14 +4,14 @@ const createCsvStringifier = require("csv-writer").createObjectCsvStringifier;
 const Transform = require("stream").Transform;
 
 
-let readStream = fs.createReadStream('/Users/armando/Desktop/SDC-project/Products/migrations/photos.csv');
+let readStream = fs.createReadStream('/Users/armando/Desktop/SDC-project/Products/clean_data/photosFormatted.csv');
 let writeStream = fs.createWriteStream('/Users/armando/Desktop/SDC-project/Products/clean_data/photos.csv');
 
 // id, styleId, url, thumbnail_url
 const csvStringifier = createCsvStringifier({
   header: [
-    { id: 'id', title: 'photos_id' },
-    { id: 'styleId', title: 'style_id' },
+    { id: 'photos_id', title: 'photos_id' },
+    { id: 'style_id', title: 'style_id' },
     { id: 'url', title: 'thumbnail_url' },
     { id: 'thumbnail_url', title: 'url' },
   ],
@@ -31,6 +31,7 @@ class CSVCleaner extends Transform {
       chunk[key] = chunk[key].trim();
     }
 
+    // console.log(chunk);
     //uses our csvStringifier to turn our chunk into a csv string
     chunk = csvStringifier.stringifyRecords([chunk]);
     this.push(chunk);

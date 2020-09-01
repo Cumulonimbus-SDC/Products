@@ -94,11 +94,12 @@ CREATE TABLE related (
 DROP TABLE IF EXISTS photos;
 
 CREATE TABLE photos (
+  id SERIAL,
   photos_id INTEGER NULL DEFAULT NULL,
   style_id INTEGER NULL DEFAULT NULL,
   thumbnail_url VARCHAR NULL DEFAULT NULL,
   url VARCHAR NULL DEFAULT NULL,
-  PRIMARY KEY (photos_id)
+  PRIMARY KEY (id)
 );
 
 -- id, name, slogan, description, category, default_price

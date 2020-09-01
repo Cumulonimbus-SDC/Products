@@ -1,10 +1,10 @@
-const client = require('./index.js');
+const query = require('./pool.js');
 
 module.exports.getProductById = (id) => {
   let product = {};
-  return client.query(`SELECT * FROM products WHERE product_id = ${id}`)
+  return query(`SELECT * FROM products WHERE product_id = ${id}`)
     .then(result => product = result.rows[0])
-    .then(prod => client.query(`SELECT * FROM features WHERE product_id = ${id}`))
+    .then(prod => query(`SELECT * FROM features WHERE product_id = ${id}`))
     .then(feats => {
       const features = [];
       for (let feature of feats.rows) {
@@ -12,7 +12,7 @@ module.exports.getProductById = (id) => {
       }
       // add features to product object
       product.features = features;
-      client.end();
+
       return product;
     })
     .catch(err => console.log(err));

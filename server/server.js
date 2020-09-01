@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const { serverPort } = require('../config.env');
 const router = require('./routes');
-const client = require('../database/Postgres/index');
+// const client = require('../database/Postgres/index');
 
 // call express
 const server = express();
