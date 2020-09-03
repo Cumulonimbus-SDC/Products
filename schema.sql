@@ -25,6 +25,8 @@ CREATE TABLE products (
   PRIMARY KEY (product_id)
 );
 
+-- \copy products(product_id, name, slogan, description, category, default_price)  FROM '/Users/armando/Desktop/SDC-project/Products/clean_data/products.csv' WITH DELIMITER ',' CSV HEADER;
+
 -- ---
 -- Table 'Features'
 --
@@ -39,6 +41,8 @@ CREATE TABLE features (
   value VARCHAR NULL DEFAULT NULL,
   PRIMARY KEY (feature_id)
 );
+
+-- \copy features(feature_id, product_id, feature, value)  FROM '/Users/armando/Desktop/SDC-project/Products/clean_data/features.csv' WITH DELIMITER ',' CSV HEADER;
 
 -- ---
 -- Table 'Styles'
@@ -57,6 +61,8 @@ CREATE TABLE styles (
   PRIMARY KEY (style_id)
 );
 
+-- \copy styles(style_id, product_id, name, original_price, sale_price, default_style)  FROM '/Users/armando/Desktop/SDC-project/Products/clean_data/styles.csv' WITH DELIMITER ',' CSV HEADER;
+
 -- ---
 -- Table 'skus'
 --
@@ -72,6 +78,8 @@ CREATE TABLE skus (
   PRIMARY KEY (skus_id)
 );
 
+-- \copy skus(skus_id, style_id, size, quantity)  FROM '/Users/armando/Desktop/SDC-project/Products/clean_data/skus.csv' WITH DELIMITER ',' CSV HEADER;
+
 -- ---
 -- Table 'Related'
 --
@@ -85,6 +93,8 @@ CREATE TABLE related (
   related_id INTEGER NULL DEFAULT NULL,
   PRIMARY KEY (id)
 );
+
+-- \copy related(id, product_id, related_id)  FROM '/Users/armando/Desktop/SDC-project/Products/clean_data/related.csv' WITH DELIMITER ',' CSV HEADER;
 
 -- ---
 -- Table 'Photos'
