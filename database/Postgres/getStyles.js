@@ -21,7 +21,7 @@ module.exports.getStyles = (id) => {
         const photos = query(queryStringPhotos)
           .then(photos => {
             const newPhotos = [];
-            console.log(photos.rows);
+            // console.log(photos.rows);
             for (let stylePhotos of photos.rows) {
               newPhotos.push({
                 url: stylePhotos.url,
