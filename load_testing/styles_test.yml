@@ -1,0 +1,14 @@
+config:
+  target: 'http://localhost:8000'
+  phases:
+    - duration: 60
+      arrivalCount: 50
+scenarios:
+  - name: "Get styles for productt 1"
+    flow:
+    - get:
+        url: "/api/products/1/styles"
+  # - name: "Get styles for product 300000"
+  #   flow:
+  #   - get:
+  #       url: "/api/products/300000/styles"
