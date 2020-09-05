@@ -4,11 +4,11 @@ config:
     - duration: 60
       arrivalRate: 5
 scenarios:
-  - name: "Get product by id = 1"
-    flow:
-    - get:
-        url: "/api/products/1"
-  - name: "Get product by id = 50000"
+  # - name: "Get product by id = 1"
+  #   flow:
+  #   - get:
+  #       url: "/api/products/1"
+  - name: "Get product by id = 500000"
     flow:
     - get:
         url: "/api/products/50000"
