@@ -16,10 +16,10 @@ router.get('/products/:id', (req, res) => {
   const prod = req.params.id;
   // res.send(`this is the great product ${prod}`);
   getProductById(prod)
-  .then(result => {
-    console.log(result);
-    res.send(result);
-  })
+    .then(result => {
+      // console.log(result);
+      res.send(result);
+    })
     .catch(err => res.sendStatus(404));
 
 });
