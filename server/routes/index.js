@@ -15,9 +15,10 @@ router.get('/products/list', function (req, res) {
 router.get('/products/:id', (req, res) => {
   const prod = req.params.id;
   // res.send(`this is the great product ${prod}`);
+  const start = Date.now();
   getProductById(prod)
     .then(result => {
-      // console.log(result);
+      console.log('time for query to resolve before res.send', Date.now() - start);
       res.send(result);
     })
     .catch(err => res.sendStatus(404));
