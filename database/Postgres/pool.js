@@ -13,7 +13,7 @@ const pool = new Pool({
   idleTimeoutMillis: 3000,
   // maximum number of clients the pool should contain
   // by default this is set to 10.
-  max: 10,
+  max: 100,
 });
 
 
