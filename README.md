@@ -1,7 +1,6 @@
 # Products API
 ## Interface Instruction for Client Side Requests
 
-# Products API
 ### List Products
 
 `GET /products`
