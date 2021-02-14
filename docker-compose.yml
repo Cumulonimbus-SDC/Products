@@ -17,4 +17,8 @@ services:
     volumes:
       - .:/usr/src/app
     ports:
-        - "8000:7000"
+      - '8000:7000'
+  cache:
+    image: redis
+    ports:
+      - '6379:6379'
