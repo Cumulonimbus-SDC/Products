@@ -9,7 +9,7 @@ module.exports.getProductById = (id) => {
     )
     .then(({ rows }) => {
       if (!rows.length) throw new Error('no rows');
-
+      //
       // console.log(id, ' THis is in parallel for product', Date.now() - start, 'ms');
       const { feature_id, feature, value, ...prod } = rows[0];
 
